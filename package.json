@@ -1,0 +1,52 @@
+{
+  "name": "forge-mcp-server",
+  "version": "2.0.0",
+  "description": "Pure MCP server implementation of the FORGE development framework",
+  "author": "Scott Feltham <scott@outdoorsphere.co.uk>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scottfeltham/forge-mcp-server.git"
+  },
+  "homepage": "https://github.com/scottfeltham/forge-mcp-server#readme",
+  "bugs": {
+    "url": "https://github.com/scottfeltham/forge-mcp-server/issues"
+  },
+  "bin": {
+    "forge-mcp-server": "./server.js"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js --stdio",
+    "dev": "node server.js --stdio --debug",
+    "test": "node test/run-tests.js",
+    "lint": "eslint server.js lib/ test/",
+    "lint:fix": "eslint --fix server.js lib/ test/"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol", 
+    "ai",
+    "development",
+    "framework",
+    "claude",
+    "chatgpt",
+    "copilot",
+    "workflow",
+    "automation",
+    "forge",
+    "ai-native",
+    "development-cycles"
+  ],
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "commander": "^11.1.0",
+    "chokidar": "^3.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,24 @@
+node_modules/
+*.log
+npm-debug.log*
+.npm
+.env
+.env.local
+.DS_Store
+.vscode/
+*.tmp
+*.temp
+coverage/
+.nyc_output/
+dist/
+build/
+
+# Test fixtures
+test/fixtures/
+test/temp/
+
+# IDE files
+.idea/
+*.swp
+*.swo
+*~
