@@ -12,8 +12,10 @@
     "url": "https://github.com/scottfeltham/forge-mcp-server/issues"
   },
   "bin": {
-    "forge-mcp-server": "./server.js"
+    "forge-mcp-server": "./server.js",
+    "forge-mcp": "./server.js"
   },
+  "preferGlobal": true,
   "main": "server.js",
   "scripts": {
     "start": "node server.js --stdio",

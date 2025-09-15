@@ -7,38 +7,47 @@
 ## 📋 Progress
 
 ### Phase 1: Focus 🎯 [Active]
+**Lead Agents**: Architect, Security, Documentation
 - [ ] Gather requirements
 - [ ] Define test scenarios (MANDATORY)
 - [ ] Create/Update PRD in specs/
 - [ ] Parallel Analysis (if complex):
-  - [ ] Technical feasibility (subagent)
-  - [ ] Security implications (subagent)
-  - [ ] Performance impact (subagent)
-- [ ] Design architecture
-- [ ] Identify risks
+  - [ ] Technical feasibility (Architect Agent)
+  - [ ] Security implications (Security Agent)
+  - [ ] Performance impact (Architect Agent)
+- [ ] Design architecture (Architect Agent)
+- [ ] Identify risks (Security Agent)
 
 ### Phase 2: Orchestrate 📝 [Pending]
-- [ ] Break down tasks
+**Lead Agents**: Architect, DevOps, Tester
+- [ ] Break down tasks (Architect Agent)
 - [ ] Assign priorities
 - [ ] Plan dependencies
+- [ ] Design test strategy (Tester Agent)
+- [ ] Plan CI/CD pipeline (DevOps Agent)
 
 ### Phase 3: Refine 🔨 [Pending]
-- [ ] Implement features
+**Lead Agents**: Developer, Tester, Code Reviewer
+- [ ] Implement features (Developer Agent)
   - [ ] Consider parallel implementation for independent components
-- [ ] Write tests
+- [ ] Write tests (Tester Agent)
   - [ ] Consider parallel test types (unit, integration, e2e)
-- [ ] Code review
+- [ ] Code review (Code Reviewer Agent)
+- [ ] Security validation (Security Agent)
 
 ### Phase 4: Generate 🚀 [Pending]
-- [ ] Build artifacts
-- [ ] Prepare deployment
-- [ ] Update documentation
+**Lead Agents**: DevOps, Documentation, Tester
+- [ ] Build artifacts (DevOps Agent)
+- [ ] Prepare deployment (DevOps Agent)
+- [ ] Update documentation (Documentation Agent)
+- [ ] Final testing (Tester Agent)
 
 ### Phase 5: Evaluate 📊 [Pending]
+**All Agents Contribute**
 - [ ] Measure success metrics
 - [ ] Gather stakeholder feedback
-- [ ] Conduct retrospective
-- [ ] Document learnings
+- [ ] Conduct retrospective (All Agents)
+- [ ] Document learnings (Documentation Agent)
 - [ ] Update knowledge base
 - [ ] Plan improvements
 
@@ -87,5 +96,17 @@
 ### Recommendations for Next Cycle
 *To be filled during Evaluate phase*
 
+## 🤖 Agent Assignments
+
+### Active Agents This Phase
+*Automatically determined based on current phase and task type*
+
+### Agent Recommendations
+*AI assistant will suggest appropriate agents based on:*
+- Current development phase
+- Feature complexity and type
+- Identified risks and requirements
+- Project configuration
+
 ## 🤖 Next Action
-Ask AI assistant to analyze requirements for {{FEATURE}}
+Ask AI assistant to analyze requirements for {{FEATURE}} with appropriate specialist agents

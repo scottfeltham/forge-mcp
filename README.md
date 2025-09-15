@@ -34,6 +34,8 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
+The server automatically uses the current working directory, supporting multiple projects without additional configuration.
+
 ### VS Code MCP Extension
 ```json
 {
@@ -49,6 +51,8 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
+Each project maintains its own `.forge/` directory for state management.
+
 ## Usage
 
 FORGE MCP Server is designed to be used entirely through AI assistants. Simply start a conversation with your AI assistant and ask for help with development workflows:
@@ -63,7 +67,8 @@ The AI assistant will use FORGE's MCP tools to guide you through structured deve
 ## Architecture
 
 - **Pure MCP Server**: No CLI interface - designed entirely for AI interaction
-- **File-based State**: Simple `.forge/` directory structure for project state
+- **Global Installation**: Single installation works across multiple projects
+- **Project-Scoped State**: Each project maintains its own `.forge/` directory
 - **Template System**: Rich templates for development cycles and specialized agents
 - **Learning Integration**: Persistent knowledge base that improves with each project
 
@@ -76,6 +81,24 @@ FORGE organizes development into structured 5-phase cycles:
 3. **Refine** 🔨 - Implementation and testing
 4. **Generate** 🚀 - Build and deployment preparation
 5. **Evaluate** 📊 - Success measurement and retrospective
+
+## Specialized Agents
+
+FORGE provides specialized AI agents for each aspect of development:
+
+### Core Development Agents
+- **🏗️ Architect Agent** - System design, architecture patterns, technology selection
+- **🔨 Developer Agent** - Code implementation, TDD practices, framework expertise
+- **🧪 Tester Agent** - Test strategy, automation, quality assurance
+- **🚀 DevOps Agent** - Infrastructure, CI/CD pipelines, deployment automation
+
+### Quality & Process Agents
+- **📝 Code Reviewer Agent** - Code quality, best practices, technical debt management
+- **🔐 Security Agent** - Vulnerability assessment, compliance, threat modeling
+- **📚 Documentation Agent** - Technical writing, API docs, knowledge management
+- **🔍 Project Analyzer Agent** - Codebase analysis, project setup optimization
+
+Each agent is automatically invoked during relevant phases of the development cycle, providing expert guidance tailored to your project's needs.
 
 ## MCP Resources & Tools
 
