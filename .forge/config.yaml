@@ -1,4 +1,4 @@
-project: test-project
+project: forge-mcp-server
 version: 2.0.0
 created: '2025-09-11T10:38:21.425Z'
 phases:
@@ -7,9 +7,9 @@ phases:
   - Refine
   - Generate
   - Evaluate
-type: web
-description: Test project for MCP functionality verification
-initialized: '2025-09-25T07:02:30.860Z'
+type: library
+description: FORGE MCP Server implementation with documentation management
+initialized: '2025-09-26T18:50:40.698Z'
 localLLM:
   enabled: true
   host: http://localhost:11434
