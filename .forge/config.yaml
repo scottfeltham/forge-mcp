@@ -1,4 +1,4 @@
-project: forge-mcp
+project: test-project
 version: 2.0.0
 created: '2025-09-11T10:38:21.425Z'
 phases:
@@ -7,8 +7,46 @@ phases:
   - Refine
   - Generate
   - Evaluate
-type: library
-description: >-
-  FORGE MCP Server - A pure MCP implementation of the FORGE development
-  framework for AI assistant interaction
-initialized: '2025-09-11T10:40:08.687Z'
+type: web
+description: Test project for MCP functionality verification
+initialized: '2025-09-25T07:02:30.860Z'
+localLLM:
+  enabled: true
+  host: http://localhost:11434
+  model: llama3.2:3b
+  fallbackModel: llama3.2:1b
+  timeout: 30000
+  trivialTaskThreshold: 0.7
+  autoDelegate: true
+  delegationTypes:
+    - generate_prd_template
+    - generate_task_breakdown
+    - generate_test_scenarios
+    - format_documentation
+    - validate_requirements
+standards:
+  hasLinting: true
+  hasTesting: true
+  hasFormatting: false
+  hasDocumentation: true
+  hasSecurity: false
+  hasCICD: false
+  hasGitHooks: false
+  hasCustomRules: false
+detectedTools:
+  linting:
+    - ESLint
+  testing:
+    - package.json
+  security: []
+  cicd: []
+forgeIntegration:
+  focusPhase:
+    - Review existing documentation standards
+    - Ensure PRD follows documentation guidelines
+  orchestratePhase: []
+  refinePhase:
+    - Run linting before marking tasks complete
+    - Fix all linting errors before code review
+  generatePhase: []
+  evaluatePhase: []

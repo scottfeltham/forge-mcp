@@ -1,0 +1,77 @@
+{
+  "summary": {
+    "hasLinting": true,
+    "hasTesting": true,
+    "hasFormatting": false,
+    "hasDocumentation": true,
+    "hasSecurity": false,
+    "hasCICD": false,
+    "hasGitHooks": false,
+    "hasCustomRules": false
+  },
+  "standards": {
+    "linting": [
+      {
+        "tool": "ESLint",
+        "configFile": ".eslintrc.js",
+        "language": "JavaScript/TypeScript",
+        "rules": {
+          "detected": true
+        }
+      }
+    ],
+    "testing": [
+      {
+        "source": "package.json",
+        "scripts": {
+          "test": "node test/run-tests.js",
+          "lint": "eslint server.js lib/ test/",
+          "lint:fix": "eslint --fix server.js lib/ test/"
+        },
+        "coverageRequired": false
+      }
+    ],
+    "formatting": [],
+    "documentation": [
+      {
+        "tool": "README",
+        "file": "README.md",
+        "type": "Project"
+      }
+    ],
+    "security": [],
+    "ci_cd": [],
+    "git": [],
+    "custom": []
+  },
+  "recommendations": [
+    {
+      "category": "testing",
+      "priority": "high",
+      "message": "Code coverage not configured. Consider enabling coverage reporting."
+    },
+    {
+      "category": "security",
+      "priority": "high",
+      "message": "No security scanning detected. Consider adding dependency scanning and secret detection."
+    },
+    {
+      "category": "git",
+      "priority": "medium",
+      "message": "No git hooks detected. Consider adding pre-commit hooks for quality checks."
+    }
+  ],
+  "forgeIntegration": {
+    "focusPhase": [
+      "Review existing documentation standards",
+      "Ensure PRD follows documentation guidelines"
+    ],
+    "orchestratePhase": [],
+    "refinePhase": [
+      "Run linting before marking tasks complete",
+      "Fix all linting errors before code review"
+    ],
+    "generatePhase": [],
+    "evaluatePhase": []
+  }
+}
