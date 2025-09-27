@@ -6,9 +6,25 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 FORGE MCP Server is a pure MCP (Model Context Protocol) implementation of the FORGE development framework. It's designed from the ground up for AI assistant interaction, providing structured development workflow management without any CLI interface.
 
-## Agent Invocation Guidelines
+## Claude Code Subagent Integration
 
-When working with FORGE development cycles, invoke specialized agents based on the current phase and task:
+FORGE provides specialized Claude Code subagents for expert guidance throughout development cycles. These are real subagents with proper tool restrictions and context management.
+
+### Available Specialized Agents
+
+**Core Development Agents:**
+- **🟦 Architect Agent** - System design, architecture patterns, technology selection
+- **🟨 Developer Agent** - Code implementation, TDD practices, technical problem-solving
+- **🟪 Tester Agent** - Test strategy, quality assurance, test automation
+- **🟩 DevOps Agent** - Infrastructure, CI/CD, deployment automation
+
+**Quality & Process Agents:**
+- **🟥 Security Agent** - Security analysis, threat modeling, compliance
+- **🟫 Documentation Agent** - Technical writing, knowledge management
+- **🟧 Code Reviewer Agent** - Code quality, best practices enforcement
+
+**Coordination Agents:**
+- **🔗 Integration Coordinator Agent** - Monorepo coordination, cross-component integration
 
 ### Phase-Based Agent Selection
 - **Focus Phase**: Architect, Security, Documentation agents for planning
@@ -17,23 +33,28 @@ When working with FORGE development cycles, invoke specialized agents based on t
 - **Generate Phase**: DevOps (primary), Documentation, Tester agents
 - **Evaluate Phase**: All agents contribute to retrospective
 
-### Task-Based Agent Selection
-- Architecture/Design → Architect Agent
-- Implementation → Developer Agent
-- Testing/QA → Tester Agent
-- Deployment/Infrastructure → DevOps Agent
-- Security concerns → Security Agent
-- Code quality → Code Reviewer Agent
-- Documentation → Documentation Agent
+### Monorepo Coordination
+For monorepo projects, use the Integration Coordinator Agent to manage:
+- Cross-component dependencies and API contracts
+- Frontend ↔ Backend integration points
+- Multi-team FORGE cycle coordination
+- Shared library and component management
+- Synchronized release strategies
 
-### Using Agent Templates
-Access agent templates via resources:
+### Agent Invocation
+Use `forge_invoke_agent` to activate specialized agents:
 ```javascript
-// Example: Reading architect agent template
-const resource = await mcp.readResource('forge://templates/agents/architect');
+// Invoke architect for system design
+forge_invoke_agent('architect', 'cycle-id', 'Design authentication system architecture')
+
+// Invoke security agent for threat analysis
+forge_invoke_agent('security', 'cycle-id', 'Analyze payment processing security risks')
+
+// Invoke integration coordinator for monorepo coordination
+forge_invoke_agent('integration-coordinator', 'cycle-id', 'Coordinate FE/BE API contracts')
 ```
 
-Agents should be invoked contextually - let the task type and development phase guide which agent expertise to apply.
+Agents are automatically invoked during cycle creation and provide context-aware, phase-specific guidance with proper tool restrictions and deliverable requirements.
 
 ## Development Commands
 
