@@ -107,6 +107,164 @@ forge_new_cycle('feature-name', {
 
 ⚠️ **Not recommended** - Incomplete requirements lead to scope creep and rework!
 
+## Command Safety and Destructive Operations
+
+**CRITICAL: FORGE enforces safety checks for all destructive operations.**
+
+### Protected Command Patterns
+
+FORGE automatically detects and requires human approval for:
+
+**File Deletion:**
+- `rm -rf` - Recursive deletion
+- `rm /path/` - Directory deletion
+- Any `rm` with wildcards (`rm *`)
+
+**Dangerous Operations:**
+- `chmod 777` - World-writable permissions
+- `>>/dev/` - Writing to device files
+- `dd` commands - Direct disk operations
+- `mkfs` - Filesystem creation
+
+**Git Operations:**
+- `git push --force` - Force push (use --force-with-lease)
+- `git reset --hard` - Hard reset (loses changes)
+- `git clean -fd` - Cleaning untracked files
+- `git branch -D` - Force delete branch
+
+**System Modifications:**
+- `sudo rm` - Elevated deletion
+- `sudo shutdown/reboot` - System control
+- `kill -9` - Force kill processes
+- Package removal (`npm uninstall`, `apt remove`)
+
+**Database Operations:**
+- `DROP DATABASE` - Database deletion
+- `DROP TABLE` - Table deletion
+- `TRUNCATE` - Data truncation
+- `DELETE FROM` - Row deletion
+
+### AI Assistant Guidelines
+
+When working with FORGE, AI assistants MUST:
+
+1. **NEVER execute destructive commands without explicit human approval**
+2. **ALWAYS suggest safer alternatives first**
+3. **REQUIRE confirmation for any command matching destructive patterns**
+4. **EXPLAIN the risks before requesting approval**
+5. **LOG all destructive operations for audit trail**
+
+### Safety Workflow
+
+```
+1. AI detects potentially destructive command
+2. AI presents WARNING with:
+   - Command and risk level
+   - What could go wrong
+   - Safer alternatives
+   - Approval requirement
+3. Human reviews and approves/rejects
+4. If approved, AI asks for FINAL confirmation
+5. Command executes only after double confirmation
+```
+
+### Example: Safe vs Unsafe
+
+❌ **UNSAFE - Will be blocked:**
+```bash
+rm -rf node_modules/
+git push --force
+chmod 777 -R .
+```
+
+✅ **SAFE - Recommended alternatives:**
+```bash
+# Instead of rm -rf, use package manager
+npm ci  # Reinstalls cleanly
+
+# Instead of force push
+git push --force-with-lease
+
+# Instead of 777
+chmod 755 file.sh  # Specific, appropriate permissions
+```
+
+### Bypass Safety (NOT RECOMMENDED)
+
+Safety checks can be disabled in FORGE config:
+```yaml
+safety:
+  commandValidation: false  # Disables all safety checks
+```
+
+⚠️ **WARNING:** Disabling safety checks removes all protections. Only do this in controlled, isolated environments.
+
+### CommandSafety Integration
+
+The CommandSafety class (`lib/core/command-safety.js`) provides the validation engine. AI assistants should use it as follows:
+
+#### JavaScript Integration
+
+```javascript
+const { CommandSafety } = require('./lib/core/command-safety.js');
+const safety = new CommandSafety({ logger: console });
+
+// Before executing ANY command:
+const validation = safety.validateCommand(command);
+
+if (!validation.safe) {
+  // STOP - Present warning to human
+  const prompt = safety.generateConfirmationPrompt(command, validation);
+  console.log(prompt);
+
+  // Wait for explicit user approval
+  // DO NOT execute until user confirms
+  return;
+}
+
+// Log all commands for audit trail
+safety.logCommand(command, validation, userApproved);
+```
+
+#### CommandSafety API
+
+**validateCommand(command)** - Returns validation result:
+```javascript
+{
+  safe: boolean,                // false if destructive pattern detected
+  severity: string,             // 'critical' | 'high' | 'medium' | 'low' | 'none'
+  description: string,          // Human-readable reason
+  pattern: string,              // Regex pattern that matched (optional)
+  requiresConfirmation: boolean // true for unsafe commands
+}
+```
+
+**generateConfirmationPrompt(command, validation)** - Returns formatted warning with:
+- Severity indicator with emoji (🚨 critical, ⚠️ high/medium, 💡 low)
+- Command being blocked
+- Risk level and explanation
+- Specific warnings based on severity
+- Safer alternatives for high/critical operations
+- Step-by-step approval instructions
+
+**logCommand(command, validation, approved)** - Creates audit trail:
+```javascript
+{
+  command: string,
+  severity: string,
+  description: string,
+  approved: boolean,
+  timestamp: ISO8601
+}
+```
+
+#### Severity Levels
+
+- **Critical**: Permanent data loss, system instability (rm -rf, DROP DATABASE, dd)
+- **High**: File/data deletion, losing uncommitted changes (git reset --hard, rm directories)
+- **Medium**: System state modification, service impact (chmod 777, kill -9, reboot)
+- **Low**: Dependency removal, requires reinstall (npm uninstall, pip uninstall)
+
 ## Development Commands
 
 ```bash

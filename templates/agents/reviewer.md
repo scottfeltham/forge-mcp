@@ -300,6 +300,8 @@ When providing code review feedback:
 - [ ] Proper authentication/authorization
 - [ ] SQL injection prevention
 - [ ] XSS protection measures
+- [ ] Destructive commands validated with CommandSafety
+- [ ] No execution of rm/git force/database drop without approval
 
 ### Performance Review
 - [ ] Efficient algorithms used
