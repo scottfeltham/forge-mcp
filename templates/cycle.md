@@ -11,12 +11,15 @@
 - [ ] Gather requirements
 - [ ] Define test scenarios (MANDATORY)
 - [ ] Create/Update PRD in specs/
+- [ ] **Commit PRD and test scenarios**
 - [ ] Parallel Analysis (if complex):
   - [ ] Technical feasibility (Architect Agent)
   - [ ] Security implications (Security Agent)
   - [ ] Performance impact (Architect Agent)
 - [ ] Design architecture (Architect Agent)
 - [ ] Identify risks (Security Agent)
+- [ ] **Commit architecture decisions and risk assessment**
+- [ ] **Push all Focus phase artifacts**
 
 ### Phase 2: Orchestrate 📝 [Pending]
 **Lead Agents**: Architect, DevOps, Tester
@@ -25,15 +28,21 @@
 - [ ] Plan dependencies
 - [ ] Design test strategy (Tester Agent)
 - [ ] Plan CI/CD pipeline (DevOps Agent)
+- [ ] **Commit task breakdown and planning documents**
+- [ ] **Push Orchestrate phase artifacts**
 
 ### Phase 3: Refine 🔨 [Pending]
 **Lead Agents**: Developer, Tester, Code Reviewer
 - [ ] Implement features (Developer Agent)
   - [ ] Consider parallel implementation for independent components
+  - [ ] **Commit after each completed feature/task**
 - [ ] Write tests (Tester Agent)
   - [ ] Consider parallel test types (unit, integration, e2e)
+  - [ ] **Commit tests with corresponding implementation**
 - [ ] Code review (Code Reviewer Agent)
 - [ ] Security validation (Security Agent)
+- [ ] **Push commits regularly (at least daily)**
+- [ ] **Push after completing major milestones**
 
 ### Phase 4: Generate 🚀 [Pending]
 **Lead Agents**: DevOps, Documentation, Tester
@@ -41,6 +50,9 @@
 - [ ] Prepare deployment (DevOps Agent)
 - [ ] Update documentation (Documentation Agent)
 - [ ] Final testing (Tester Agent)
+- [ ] **Commit build configurations and deployment scripts**
+- [ ] **Commit updated documentation**
+- [ ] **Push all Generate phase artifacts**
 
 ### Phase 5: Evaluate 📊 [Pending]
 **All Agents Contribute**
@@ -50,6 +62,9 @@
 - [ ] Document learnings (Documentation Agent)
 - [ ] Update knowledge base
 - [ ] Plan improvements
+- [ ] **Commit retrospective and learnings**
+- [ ] **Push final cycle artifacts**
+- [ ] **Tag release if applicable**
 
 ## 📝 Notes
 

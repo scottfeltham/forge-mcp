@@ -56,6 +56,57 @@ forge_invoke_agent('integration-coordinator', 'cycle-id', 'Coordinate FE/BE API 
 
 Agents are automatically invoked during cycle creation and provide context-aware, phase-specific guidance with proper tool restrictions and deliverable requirements.
 
+## Conversational PRD Building
+
+FORGE uses an **interactive, conversational approach** when creating new development cycles:
+
+### Starting a New Cycle
+
+When you call `forge_new_cycle` with minimal information, FORGE will:
+
+1. **Ask clarifying questions** about the feature requirements
+2. **Guide you through PRD creation** with structured prompts
+3. **Validate completeness** before creating the cycle
+4. **Request confirmation** showing what will be created
+
+**Example Flow:**
+```javascript
+// Initial request with minimal info
+forge_new_cycle('user-authentication')
+
+// FORGE responds with questions:
+// - What authentication methods?
+// - Security requirements?
+// - Integration points?
+// - Success criteria?
+
+// After you provide details, FORGE validates and may ask for more info
+// Only when PRD is complete does FORGE create the cycle
+```
+
+### PRD Requirements
+
+A comprehensive PRD should include:
+
+- **User Context**: Who needs this and why?
+- **Acceptance Criteria**: What defines success?
+- **Technical Details**: System components and integrations
+- **Security & Compliance**: Requirements and standards
+- **Success Metrics**: Measurable outcomes
+
+### Bypassing Validation
+
+For experienced users or quick prototypes, you can skip validation:
+
+```javascript
+forge_new_cycle('feature-name', {
+  description: 'detailed description...',
+  confirmed: true  // Skip PRD validation
+})
+```
+
+⚠️ **Not recommended** - Incomplete requirements lead to scope creep and rework!
+
 ## Development Commands
 
 ```bash
@@ -149,3 +200,26 @@ node test/basic-test.js
 - Templates use Markdown format for AI-friendly processing
 - The server supports both stdio (default) and SSE transports
 - Debug logging available with `--debug` flag for troubleshooting
+
+### Git Workflow Best Practices
+
+**FORGE strongly encourages regular commits and pushes throughout development cycles:**
+
+- **Commit frequently**: After completing each meaningful task or checkpoint
+- **Push regularly**: Share your progress with the team at least daily
+- **Descriptive messages**: Write clear commit messages that explain the "why"
+- **Small, focused commits**: Each commit should represent a single logical change
+
+**Phase-specific commit guidelines:**
+- **Focus Phase**: Commit PRD, test scenarios, and architecture decisions
+- **Orchestrate Phase**: Commit task breakdown and planning documents
+- **Refine Phase**: Commit after each completed task/feature implementation
+- **Generate Phase**: Commit deployment configurations and build artifacts
+- **Evaluate Phase**: Commit retrospectives and learnings
+
+**Benefits of regular commits:**
+- Maintains clear project history and progress tracking
+- Enables easy rollback if issues arise
+- Facilitates team collaboration and code review
+- Preserves work incrementally, reducing risk of loss
+- Allows parallel development without conflicts

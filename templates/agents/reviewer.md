@@ -284,6 +284,8 @@ When providing code review feedback:
 - [ ] Documentation is updated
 - [ ] No commented-out code
 - [ ] No debug/console statements
+- [ ] Changes committed with descriptive messages
+- [ ] Commits represent logical, atomic changes
 
 ### Design Review
 - [ ] Follows SOLID principles
