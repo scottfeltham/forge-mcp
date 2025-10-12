@@ -1,0 +1,19 @@
+updated: '2025-10-12T15:57:08.326Z'
+structure:
+  prd: 1
+  architecture: 0
+  api: 0
+  testing: 1
+  deployment: 0
+  security: 0
+  user-guides: 0
+  retrospectives: 0
+documents:
+  - type: prd
+    file: pre-agent-codebase-summary-system-prd.md
+    path: prd/pre-agent-codebase-summary-system-prd.md
+    modified: 2025-10-12T15:57:08.322Z
+  - type: testing
+    file: pre-agent-codebase-summary-system-test-scenarios.md
+    path: testing/pre-agent-codebase-summary-system-test-scenarios.md
+    modified: 2025-10-12T15:57:08.327Z
