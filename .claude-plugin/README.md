@@ -11,6 +11,7 @@ Official Claude Code plugin for the **FORGE Development Framework** - Structured
 - **✅ Phase Validation & Enforcement** - Quality gates prevent advancing with incomplete work
 - **📄 Automatic Documentation** - PRD, architecture, and test plans generated automatically
 - **🔧 Git Workflow Integration** - Pre-commit hooks and best practices guidance
+- **📊 Real-time Status Line** - See current cycle, phase, and progress in Claude Code status bar
 - **⚡ Local LLM Delegation** - Offload trivial tasks to local models (optional)
 
 ## 📦 Installation
@@ -157,6 +158,31 @@ Example blocking conditions:
 - Refine: Tests not passing, code review incomplete
 - Generate: Build artifacts missing, documentation outdated
 - Evaluate: Metrics not collected
+
+## 📊 Status Line
+
+The FORGE plugin automatically configures your Claude Code status line to display real-time cycle information:
+
+**Status Line Display:**
+```
+🔵 FORGE: [cycle-name] Focus 🎯 | high | 0%
+```
+
+**Status Indicators:**
+- 🔵 **Focus** (Blue) - Requirements & Planning
+- 🟡 **Orchestrate** (Yellow) - Task Breakdown
+- 🟢 **Refine** (Green) - Implementation & Testing
+- 🟣 **Generate** (Purple) - Build & Deploy
+- 🟠 **Evaluate** (Orange) - Measure & Learn
+- ⭕ **Ready** (Gray) - No active cycles
+
+**What's Displayed:**
+- Current cycle name (truncated if long)
+- Active phase with emoji
+- Priority level (critical, high, medium, low)
+- Progress percentage
+
+**Updates:** Status line refreshes every 300ms during conversation, giving you instant visibility into your development progress.
 
 ## 🎨 Configuration
 

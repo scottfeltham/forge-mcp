@@ -106,5 +106,10 @@
       "default": true,
       "description": "Enable interactive PRD building for new cycles"
     }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "${pluginDir}/statusline.js",
+    "padding": 0
   }
 }
