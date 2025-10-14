@@ -53,6 +53,10 @@ The server automatically uses the current working directory, supporting multiple
 
 Each project maintains its own `.forge/` directory for state management.
 
+**📖 [See all AI client configurations →](docs/MCP_UNIVERSAL_COMPATIBILITY.md)**
+
+FORGE works with any MCP-compatible AI client including Claude, ChatGPT, GitHub Copilot, Cursor, VS Code, and more.
+
 ## Usage
 
 FORGE MCP Server is designed to be used entirely through AI assistants. Simply start a conversation with your AI assistant and ask for help with development workflows:
