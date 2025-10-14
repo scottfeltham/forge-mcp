@@ -2,12 +2,14 @@
 
 **Pure MCP (Model Context Protocol) implementation of the FORGE development framework**
 
-FORGE MCP Server is an AI-native development framework designed from the ground up for AI assistant interaction. Unlike traditional CLI tools, this server provides direct, structured access to development workflow management through the universal MCP standard.
+FORGE MCP Server is an AI-native development framework designed from the ground up for AI-powered development tools. Unlike traditional CLI tools, this server provides direct, structured access to development workflow management through the universal MCP standard.
+
+**⚠️ Note:** FORGE is designed for AI-powered development tools (Claude Code, Cursor, VS Code, etc.), not general chat applications.
 
 ## Features
 
-- 🤖 **AI-Native Design**: Built specifically for AI assistant interaction
-- 🔌 **Universal Compatibility**: Works with Claude, ChatGPT, Copilot, VS Code, and any MCP client
+- 🤖 **AI-Native Design**: Built specifically for AI coding assistants
+- 🔌 **Universal Compatibility**: Works with Claude Code, Cursor, Continue, VS Code, and any MCP-compatible development tool
 - 📋 **Structured Workflows**: 5-phase development cycles (Focus → Orchestrate → Refine → Generate → Evaluate)
 - 🧠 **Learning System**: Persistent project knowledge that grows with each interaction
 - 📚 **Rich Templates**: Comprehensive templates for cycles, agents, and documentation
@@ -21,8 +23,10 @@ npm install -g forge-mcp-server
 
 ## Configuration
 
-### Claude Desktop
-Add to your `claude_desktop_config.json`:
+### Claude Code
+
+FORGE works seamlessly with Claude Code. Add to `~/.config/claude-code/settings.json`:
+
 ```json
 {
   "mcpServers": {
@@ -34,9 +38,25 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
-The server automatically uses the current working directory, supporting multiple projects without additional configuration.
+### Cursor IDE
 
-### VS Code MCP Extension
+Add to `.cursor/config.json`:
+
+```json
+{
+  "mcpServers": {
+    "forge": {
+      "command": "forge-mcp-server",
+      "args": ["--stdio"]
+    }
+  }
+}
+```
+
+### VS Code with MCP Extension
+
+Add to VS Code `settings.json`:
+
 ```json
 {
   "mcp.servers": [
@@ -53,24 +73,31 @@ The server automatically uses the current working directory, supporting multiple
 
 Each project maintains its own `.forge/` directory for state management.
 
-**📖 [See all AI client configurations →](docs/MCP_UNIVERSAL_COMPATIBILITY.md)**
+**📖 [See all development tool configurations →](docs/MCP_UNIVERSAL_COMPATIBILITY.md)**
 
-FORGE works with any MCP-compatible AI client including Claude, ChatGPT, GitHub Copilot, Cursor, VS Code, and more.
+FORGE works with any MCP-compatible development tool including Claude Code, Cursor, Continue, Zed, and more.
 
 ## Usage
 
-FORGE MCP Server is designed to be used entirely through AI assistants. Simply start a conversation with your AI assistant and ask for help with development workflows:
+FORGE MCP Server is designed to be used entirely through AI-powered development tools. Interact with FORGE through your AI coding assistant:
 
+**Examples with Claude Code:**
 - "Help me set up FORGE for my React project"
 - "I need to implement user authentication"
 - "Show me the status of my current development cycle"
 - "What did we learn from the last authentication project?"
 
-The AI assistant will use FORGE's MCP tools to guide you through structured development cycles, manage project state, and capture learnings.
+**Examples with Cursor:**
+- "Initialize FORGE for this TypeScript API"
+- "Create a new FORGE cycle for payment integration"
+- "Check FORGE phase requirements"
+
+Your AI coding assistant will use FORGE's MCP tools to guide you through structured development cycles, manage project state, and capture learnings.
 
 ## Architecture
 
-- **Pure MCP Server**: No CLI interface - designed entirely for AI interaction
+- **Pure MCP Server**: No CLI interface - designed entirely for AI coding assistant interaction
+- **Development Tool Integration**: Works with any MCP-compatible development tool
 - **Global Installation**: Single installation works across multiple projects
 - **Project-Scoped State**: Each project maintains its own `.forge/` directory
 - **Template System**: Rich templates for development cycles and specialized agents

@@ -1,31 +1,39 @@
-# FORGE MCP Server - Universal AI Client Compatibility
+# FORGE MCP Server - Universal Development Tool Compatibility
 
 ## Overview
 
-FORGE MCP Server is built using the **Model Context Protocol (MCP)** - a universal, open standard for connecting AI assistants to external tools and data sources. This means FORGE works with **any MCP-compatible AI client**, not just Claude.
+FORGE MCP Server is built using the **Model Context Protocol (MCP)** - a universal, open standard for connecting AI assistants to external tools and data sources. FORGE is specifically designed for **AI-powered development tools**, not general chat applications.
 
-## Supported AI Clients
+## Supported Development Tools
 
-FORGE MCP Server works with all MCP-compatible clients, including:
+FORGE MCP Server works with MCP-compatible development tools and coding assistants:
 
-### ✅ Anthropic Claude
-- **Claude Desktop** (macOS/Windows)
-- **Claude Code** (CLI/VSCode extension)
-- **Claude.ai** (via MCP bridge)
+### ✅ Claude Code
+- **Claude Code CLI** - Terminal-based AI coding assistant
+- **Claude Code for VS Code** - VSCode extension
 
-### ✅ OpenAI
-- **ChatGPT Desktop** (with MCP support)
-- **ChatGPT API** (via MCP integration)
-- **Cursor IDE** (supports MCP servers)
+### ✅ AI-Powered IDEs
+- **Cursor IDE** - AI-first code editor with MCP support
+- **Zed Editor** - Collaborative editor with built-in MCP support
+- **Continue** - Open-source AI coding assistant for VS Code/JetBrains
 
-### ✅ Microsoft
-- **GitHub Copilot** (with MCP extensions)
-- **VS Code** (via MCP extension)
+### ✅ Editor Extensions
+- **VS Code with MCP Extension** - Generic MCP client for VS Code
+- **GitHub Copilot** (with MCP bridge when available)
+- **Codeium** (with MCP support)
 
-### ✅ Other MCP Clients
-- **Zed Editor** (built-in MCP support)
-- **Continue** (open-source AI coding assistant)
-- **Any custom MCP client**
+### ✅ Custom Development Tools
+- **Any custom MCP-based development tool**
+- **CI/CD integrations** (via MCP)
+- **Build tool integrations**
+
+### ❌ NOT Supported
+FORGE is **not designed for general chat applications**:
+- ❌ Claude Desktop (chat application)
+- ❌ ChatGPT Desktop (chat application)
+- ❌ General conversational AI interfaces
+
+**Why?** FORGE is a structured development framework designed for project-based workflows, file system access, and development tooling integration - not casual conversation.
 
 ## Transport Protocols
 
@@ -59,9 +67,11 @@ forge-mcp-server --sse 3000
 
 ## Configuration Examples
 
-### Claude Desktop
+### Claude Code (CLI or VS Code Extension)
 
-Add to `claude_desktop_config.json`:
+FORGE works seamlessly with Claude Code. No additional configuration needed - Claude Code automatically discovers MCP servers configured in your project or global settings.
+
+Add to `~/.config/claude-code/settings.json` (or workspace settings):
 
 ```json
 {
@@ -74,10 +84,6 @@ Add to `claude_desktop_config.json`:
   }
 }
 ```
-
-**Config Location:**
-- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 ### VS Code with MCP Extension
 
@@ -99,7 +105,7 @@ Add to VS Code `settings.json`:
 
 ### Cursor IDE
 
-Add to Cursor's MCP configuration:
+Add to Cursor's MCP configuration (`.cursor/config.json`):
 
 ```json
 {
@@ -112,7 +118,9 @@ Add to Cursor's MCP configuration:
 }
 ```
 
-### ChatGPT Desktop (when available)
+### Continue (VS Code/JetBrains)
+
+Add to Continue's config file (`~/.continue/config.json`):
 
 ```json
 {
@@ -125,7 +133,7 @@ Add to Cursor's MCP configuration:
 }
 ```
 
-### Custom/Web Clients (SSE)
+### Custom Development Tools (SSE)
 
 Start FORGE with SSE transport:
 
@@ -202,24 +210,24 @@ FORGE is intentionally designed to work with any AI client:
 - JSON for data interchange
 - All standard, client-agnostic formats
 
-## Multi-Client Usage
+## Multi-Tool Usage
 
-You can use FORGE with multiple AI clients simultaneously:
+You can use FORGE with multiple development tools simultaneously:
 
-### Same Project, Different Clients
+### Same Project, Different Tools
 
 ```bash
 # Terminal with Claude Code
 $ claude "Show me FORGE status"
 
-# VS Code with Copilot
-> Ask Copilot: "Check FORGE cycle progress"
+# VS Code with Continue
+> Ask Continue: "Check FORGE cycle progress"
 
-# Claude Desktop
-User: "What's the current FORGE phase?"
+# Cursor IDE
+> Ask Cursor: "What's the current FORGE phase?"
 ```
 
-All clients access the same `.forge/` state, ensuring consistency.
+All tools access the same `.forge/` state, ensuring consistency across your development environment.
 
 ### Different Projects
 
@@ -261,23 +269,24 @@ node server.js --stdio
 
 ## Migration Guide
 
-### From Claude-Specific Setup
+### From Other MCP Servers
 
-If you're currently using FORGE with Claude and want to support other clients:
+If you're migrating from another MCP-based development framework:
 
-1. **No changes needed!** FORGE already supports any MCP client
-2. Add configuration for your new AI client (see examples above)
-3. Point to the same FORGE server installation
-4. Start using FORGE with multiple clients
+1. Install FORGE MCP server (see installation above)
+2. Add FORGE to your development tool's MCP configuration
+3. Initialize FORGE in your project: AI will use `forge_init_project`
+4. Existing `.forge/` directories will be preserved if already present
 
-### From CLI Tools
+### From Manual/CLI Workflows
 
-If you're used to CLI-based development tools:
+If you're transitioning from manual development processes:
 
-1. FORGE has no CLI - it's pure MCP
-2. Interact entirely through your AI assistant
-3. Ask your AI to use FORGE tools for structured development
-4. The AI guides you through the workflow
+1. FORGE has no CLI - it's entirely MCP-based
+2. Interact through your AI-powered development tool (Claude Code, Cursor, etc.)
+3. Ask your AI to initialize FORGE and create development cycles
+4. The AI guides you through structured 5-phase workflows
+5. All state managed in `.forge/` directory
 
 ## Troubleshooting
 
@@ -288,14 +297,14 @@ If you're used to CLI-based development tools:
 ### "Tools Not Appearing"
 
 **Solution:**
-1. Restart your AI client after configuration changes
+1. Restart your development tool after configuration changes
 2. Check that Node.js 18+ is installed
 3. Test server directly: `node server.js --stdio`
 
-### "State Not Syncing Between Clients"
+### "State Not Syncing Between Tools"
 
 **Solution:**
-1. Ensure all clients point to the same FORGE server
+1. Ensure all development tools point to the same FORGE server
 2. Verify working directory is correct
 3. Check `.forge/` directory exists in your project
 
@@ -337,20 +346,21 @@ Use the same FORGE workflow regardless of AI client:
 3. Progress through phases
 4. Complete and learn
 
-### ✅ AI Client Choice
+### ✅ Development Tool Choice
 
-Choose AI client based on your preferences:
-- **Claude**: Best for conversational development
-- **Copilot**: Best for in-editor assistance
-- **ChatGPT**: Best for web-based interaction
-- **Custom**: Build your own MCP client!
+Choose development tool based on your workflow:
+- **Claude Code**: Best for conversational development and structured workflows
+- **Cursor**: Best for AI-first code editing
+- **Continue**: Best for open-source, customizable AI assistance
+- **VS Code + MCP**: Best for integrating with existing VS Code setup
+- **Custom**: Build your own MCP-based development tool!
 
 ## Future Compatibility
 
 FORGE will remain compatible with:
 
 - ✅ **MCP Protocol Updates** - We track the MCP specification
-- ✅ **New AI Clients** - Any MCP-compatible client works automatically
+- ✅ **New Development Tools** - Any MCP-compatible development tool works automatically
 - ✅ **Extended Capabilities** - Backwards-compatible enhancements
 - ✅ **Community Extensions** - Open for community contributions
 
@@ -363,6 +373,6 @@ FORGE will remain compatible with:
 
 ---
 
-**FORGE MCP Server: Universal AI-Native Development**
+**FORGE MCP Server: Universal AI-Native Development Framework**
 
-Works with Claude, ChatGPT, Copilot, and any MCP-compatible AI client.
+Works with Claude Code, Cursor, Continue, VS Code, and any MCP-compatible development tool.
