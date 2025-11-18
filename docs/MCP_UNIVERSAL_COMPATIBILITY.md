@@ -40,17 +40,17 @@ FORGE is **not designed for general chat applications**:
 FORGE supports both standard MCP transport protocols:
 
 ### 1. STDIO Transport (Default)
-Standard input/output communication - works with most desktop AI clients.
+Standard input/output communication - works with most development tools.
 
 ```bash
 forge-mcp-server --stdio
 ```
 
 **Best for:**
-- Claude Desktop
-- VS Code extensions
-- CLI-based clients
-- Local development
+- Claude Code (CLI and VS Code extension)
+- VS Code extensions with MCP support
+- CLI-based development tools
+- Local development environments
 
 ### 2. SSE Transport (Server-Sent Events)
 HTTP-based communication - works with web-based and remote clients.

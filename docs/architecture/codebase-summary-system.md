@@ -546,12 +546,6 @@ forge-mcp/
 │   ├── prd.md                # PRD template
 │   └── retrospective.md      # Retrospective template
 │
-├── .claude-plugin/           # Claude Code plugin
-│   ├── plugin.json           # Plugin manifest
-│   ├── commands/             # Slash commands
-│   ├── agents/               # Agent definitions
-│   └── hooks/                # Workflow hooks
-│
 ├── docs/                     # Documentation
 │   ├── prd/                  # Product requirements
 │   ├── architecture/         # Architecture docs

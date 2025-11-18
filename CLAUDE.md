@@ -299,8 +299,8 @@ npm run lint:fix
    - File-based state storage for simplicity and transparency
 
 3. **Transport Layer** (`lib/transport/`)
-   - `stdio.js`: Default stdio transport for Claude Desktop and VS Code
-   - `sse.js`: Server-Sent Events transport for web clients
+   - `stdio.js`: Default stdio transport for development tools (Claude Code, VS Code, etc.)
+   - `sse.js`: Server-Sent Events transport for web-based clients
 
 4. **Resources** (`lib/resources/index.js`)
    - Provides MCP resources for templates, cycles, context, and learnings
