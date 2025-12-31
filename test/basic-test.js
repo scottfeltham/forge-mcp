@@ -14,7 +14,7 @@ async function createTestDirectory() {
 }
 
 async function cleanupTestDirectory(testDir) {
-  await fs.rmdir(testDir, { recursive: true });
+  await fs.rm(testDir, { recursive: true, force: true });
 }
 
 // Test State Manager

@@ -27,11 +27,18 @@ FORGE provides specialized Claude Code subagents for expert guidance throughout 
 - **🔗 Integration Coordinator Agent** - Monorepo coordination, cross-component integration
 
 ### Phase-Based Agent Selection
-- **Focus Phase**: Architect, Security, Documentation agents for planning
-- **Orchestrate Phase**: Architect (detailed design), DevOps (pipeline planning)
-- **Refine Phase**: Developer (primary), Tester, Code Reviewer agents
-- **Generate Phase**: DevOps (primary), Documentation, Tester agents
-- **Evaluate Phase**: All agents contribute to retrospective
+
+FORGE implements Intent-Driven Development (IDD) through 5 phases:
+
+| Phase | Purpose | Primary Agents | Deliverables |
+|-------|---------|----------------|--------------|
+| **Focus** 🎯 | Clarity: What & Why | Architect, Security, Documentation | Problem statement, success criteria, C4 L1 |
+| **Orchestrate** 📋 | Planning: Break It Down | Architect | C4 L2-L3, dependency map, session-sized tasks |
+| **Refine** ✏️ | Precision: Define "Done" | Tester, Architect | Acceptance criteria, interfaces, edge cases |
+| **Generate** ⚡ | Creation: AI Writes Code | Developer, Reviewer | TDD implementation, code review |
+| **Evaluate** ✅ | Verification: Match Intent | Tester, Security | Criteria verification, edge case testing |
+
+**CRITICAL**: Refine phase is for SPECIFICATION only - no code is written. Generate phase is where TDD implementation happens.
 
 ### Monorepo Coordination
 For monorepo projects, use the Integration Coordinator Agent to manage:
@@ -314,12 +321,32 @@ npm run lint:fix
 
 ### FORGE Development Cycle
 
-The framework organizes work into 5-phase cycles:
-1. **Focus** - Requirements gathering and planning
-2. **Orchestrate** - Task breakdown and dependency planning
-3. **Refine** - Implementation and testing
-4. **Generate** - Build and deployment preparation
-5. **Evaluate** - Success measurement and retrospective
+The framework organizes work into 5-phase cycles implementing Intent-Driven Development:
+
+1. **Focus** 🎯 - **Clarity: What & Why**
+   - Problem statement, target users, testable success criteria
+   - System Context diagram (C4 Level 1)
+   - Clear boundaries - what you WON'T build
+
+2. **Orchestrate** 📋 - **Planning: Break It Down**
+   - Container architecture (C4 Level 2) - deployable units
+   - Component architecture (C4 Level 3) - internal structure
+   - Dependency mapping, session-sized tasks
+
+3. **Refine** ✏️ - **Precision: Define "Done" BEFORE Code**
+   - Acceptance criteria (Given-When-Then format)
+   - Interface specifications (inputs, outputs, errors)
+   - Edge cases by category - NO CODE WRITTEN
+
+4. **Generate** ⚡ - **Creation: AI Writes Code**
+   - One task per session
+   - TDD: RED → GREEN → REFACTOR
+   - Code review before advancing
+
+5. **Evaluate** ✅ - **Verification: Does Output Match Intent?**
+   - Verify against acceptance criteria
+   - Test edge cases (listed AND unlisted)
+   - Disposition: Accept / Accept with issues / Revise / Reject
 
 ### File Structure
 
@@ -369,11 +396,11 @@ node test/basic-test.js
 - **Small, focused commits**: Each commit should represent a single logical change
 
 **Phase-specific commit guidelines:**
-- **Focus Phase**: Commit PRD, test scenarios, and architecture decisions
-- **Orchestrate Phase**: Commit task breakdown and planning documents
-- **Refine Phase**: Commit after each completed task/feature implementation
-- **Generate Phase**: Commit deployment configurations and build artifacts
-- **Evaluate Phase**: Commit retrospectives and learnings
+- **Focus Phase**: Commit problem statements, success criteria, C4 L1 diagrams
+- **Orchestrate Phase**: Commit C4 L2-L3 architecture, dependency maps, task breakdowns
+- **Refine Phase**: Commit acceptance criteria, interface specs, edge case lists (NO CODE)
+- **Generate Phase**: Commit implementation code, tests, code review results
+- **Evaluate Phase**: Commit verification results, retrospectives, disposition decisions
 
 **Benefits of regular commits:**
 - Maintains clear project history and progress tracking
