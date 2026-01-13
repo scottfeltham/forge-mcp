@@ -369,14 +369,21 @@ node test/basic-test.js
 
 ## Key MCP Tools
 
-- `forge_init_project` - Initialize FORGE in a project
-- `forge_new_cycle` - Create development cycle
-- `forge_cycle_status` - Check cycle progress
-- `forge_phase_advance` - Move to next phase
-- `forge_complete_cycle` - Complete and archive cycle
-- `forge_add_learning` - Capture project insights
-- `forge_retrospective` - Generate retrospective
-- `forge_analyze_project` - Analyze project structure
+| Tool | Purpose |
+|------|---------|
+| `forge_init` | Initialize FORGE in a project |
+| `forge_new_cycle` | Create development cycle |
+| `forge_list_cycles` | List all cycles |
+| `forge_status` | Check cycle progress |
+| `forge_validate` | Validate phase requirements |
+| `forge_advance_phase` | Move to next phase |
+| `forge_complete_task` | Mark task complete |
+| `forge_add_task` | Add new task |
+| `forge_complete_cycle` | Complete and archive cycle |
+| `forge_add_learning` | Capture project insights |
+| `forge_retro` | Run retrospective |
+| `forge_get_cycle` | Get cycle content |
+| `forge_invoke_agent` | Invoke specialist agent |
 
 ## Development Guidelines
 

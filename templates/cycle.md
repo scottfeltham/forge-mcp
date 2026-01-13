@@ -1,127 +1,101 @@
-# Feature: {{FEATURE}}
+# Cycle: {{name}}
 
-**Started**: {{DATE}}  
-**Status**: Focus Phase  
-**Priority**: {{PRIORITY}}
+**Created**: {{created}}
+**Priority**: {{priority}}
+**Status**: Active
 
-## 📋 Progress
+## Overview
 
-### Phase 1: Focus 🎯 [Active]
-**Lead Agents**: Architect, Security, Documentation
-- [ ] Gather requirements
-- [ ] Define test scenarios (MANDATORY)
-- [ ] Create/Update PRD in specs/
-- [ ] **Commit PRD and test scenarios**
-- [ ] Parallel Analysis (if complex):
-  - [ ] Technical feasibility (Architect Agent)
-  - [ ] Security implications (Security Agent)
-  - [ ] Performance impact (Architect Agent)
-- [ ] Design architecture (Architect Agent)
-- [ ] Identify risks (Security Agent)
-- [ ] **Commit architecture decisions and risk assessment**
-- [ ] **Push all Focus phase artifacts**
+<!-- Describe what this cycle aims to accomplish -->
 
-### Phase 2: Orchestrate 📝 [Pending]
-**Lead Agents**: Architect, DevOps, Tester
-- [ ] Break down tasks (Architect Agent)
-- [ ] Assign priorities
-- [ ] Plan dependencies
-- [ ] Design test strategy (Tester Agent)
-- [ ] Plan CI/CD pipeline (DevOps Agent)
-- [ ] **Commit task breakdown and planning documents**
-- [ ] **Push Orchestrate phase artifacts**
+---
 
-### Phase 3: Refine 🔨 [Pending]
-**Lead Agents**: Developer, Tester, Code Reviewer
-- [ ] Implement features (Developer Agent)
-  - [ ] Consider parallel implementation for independent components
-  - [ ] **Commit after each completed feature/task**
-- [ ] Write tests (Tester Agent)
-  - [ ] Consider parallel test types (unit, integration, e2e)
-  - [ ] **Commit tests with corresponding implementation**
-- [ ] Code review (Code Reviewer Agent)
-- [ ] Security validation (Security Agent)
-- [ ] **Push commits regularly (at least daily)**
-- [ ] **Push after completing major milestones**
+<!-- FORGE_PHASE:Focus:Active -->
+## Phase 1: Focus
 
-### Phase 4: Generate 🚀 [Pending]
-**Lead Agents**: DevOps, Documentation, Tester
-- [ ] Build artifacts (DevOps Agent)
-- [ ] Prepare deployment (DevOps Agent)
-- [ ] Update documentation (Documentation Agent)
-- [ ] Final testing (Tester Agent)
-- [ ] **Commit build configurations and deployment scripts**
-- [ ] **Commit updated documentation**
-- [ ] **Push all Generate phase artifacts**
+**Purpose**: Define what you're building and why.
 
-### Phase 5: Evaluate 📊 [Pending]
-**All Agents Contribute**
-- [ ] Measure success metrics
-- [ ] Gather stakeholder feedback
-- [ ] Conduct retrospective (All Agents)
-- [ ] Document learnings (Documentation Agent)
-- [ ] Update knowledge base
-- [ ] Plan improvements
-- [ ] **Commit retrospective and learnings**
-- [ ] **Push final cycle artifacts**
-- [ ] **Tag release if applicable**
+### Required Outputs
+- [ ] Problem statement and target users defined
+- [ ] Testable success criteria written
+- [ ] System Context diagram (C4 L1) created
+- [ ] Clear boundaries on what you WON'T build
 
-## 📝 Notes
+### Notes
 
-### Requirements
-*AI assistant will help fill this section*
+<!-- Document Focus phase work here -->
 
-### Test Scenarios [MANDATORY - Must be completed in Focus phase]
-*Link to test scenarios: [Not yet created]*
-<!-- Test scenarios MUST be defined before any code is written -->
-<!-- Use templates/test-scenarios.md as a guide -->
-<!-- NO IMPLEMENTATION WITHOUT TEST SCENARIOS -->
+---
 
-### Architecture Decisions
-*To be determined during Focus phase*
+<!-- FORGE_PHASE:Orchestrate:Pending -->
+## Phase 2: Orchestrate
 
-### Parallel Task Opportunities
-*Identify tasks that can be executed in parallel using subagents*
-<!-- Consider parallel execution for:
-     - Multi-aspect analysis (technical, security, performance)
-     - Independent component development
-     - Different test types (unit, integration, e2e)
-     - Documentation tasks (generation, auditing, formatting)
--->
+**Purpose**: Break the work into session-sized pieces.
+
+### Required Outputs
+- [ ] Container architecture (C4 L2) designed
+- [ ] Component architecture (C4 L3) designed
+- [ ] Dependency map created
+- [ ] Tasks sized for single AI sessions
 
 ### Tasks
-*To be created during Orchestrate phase*
 
-## 📊 Evaluation Results
+<!-- List tasks here -->
 
-### Success Metrics
-| Metric | Target | Actual | Status |
-|--------|--------|--------|--------|
-| *Define during Focus* | - | - | - |
+---
 
-### What Worked Well
-*To be filled during Evaluate phase*
+<!-- FORGE_PHASE:Refine:Pending -->
+## Phase 3: Refine
 
-### What Didn't Work
-*To be filled during Evaluate phase*
+**Purpose**: Define exactly what "done" looks like.
 
-### Key Learnings
-*To be filled during Evaluate phase*
+### Required Outputs
+- [ ] Acceptance criteria in Given-When-Then format
+- [ ] Interface specifications documented
+- [ ] Edge cases enumerated by category
+- [ ] Constraints vs criteria documented
 
-### Recommendations for Next Cycle
-*To be filled during Evaluate phase*
+**CRITICAL**: No code in this phase - specifications only.
 
-## 🤖 Agent Assignments
+### Specifications
 
-### Active Agents This Phase
-*Automatically determined based on current phase and task type*
+<!-- Document specifications here -->
 
-### Agent Recommendations
-*AI assistant will suggest appropriate agents based on:*
-- Current development phase
-- Feature complexity and type
-- Identified risks and requirements
-- Project configuration
+---
 
-## 🤖 Next Action
-Ask AI assistant to analyze requirements for {{FEATURE}} with appropriate specialist agents
+<!-- FORGE_PHASE:Generate:Pending -->
+## Phase 4: Generate
+
+**Purpose**: AI writes code following TDD.
+
+### Process
+- [ ] RED: Write failing tests
+- [ ] GREEN: Minimal code to pass
+- [ ] REFACTOR: Improve while green
+
+### Implementation Notes
+
+<!-- Document implementation progress here -->
+
+---
+
+<!-- FORGE_PHASE:Evaluate:Pending -->
+## Phase 5: Evaluate
+
+**Purpose**: Verify output matches intent.
+
+### Checklist
+- [ ] Criteria verified line-by-line
+- [ ] Edge cases tested
+- [ ] Security review completed
+- [ ] Integration tested
+
+### Disposition
+
+<!-- Accept / Accept with issues / Revise / Reject -->
+
+---
+
+## Learnings
+
+<!-- Capture learnings during and after the cycle -->

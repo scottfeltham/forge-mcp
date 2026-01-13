@@ -2,162 +2,132 @@
 
 **Pure MCP (Model Context Protocol) implementation of the FORGE development framework**
 
-FORGE MCP Server is an AI-native development framework designed from the ground up for AI-powered development tools. Unlike traditional CLI tools, this server provides direct, structured access to development workflow management through the universal MCP standard.
-
-**⚠️ Note:** FORGE is designed for AI-powered development tools (Claude Code, Cursor, VS Code, etc.), not general chat applications.
+FORGE MCP Server is an AI-native development framework designed for AI-powered development tools. It provides structured workflow management through the MCP standard, implementing Intent-Driven Development (IDD).
 
 ## Features
 
-- 🤖 **AI-Native Design**: Built specifically for AI coding assistants
-- 🔌 **Universal Compatibility**: Works with Claude Code, Cursor, Continue, VS Code, and any MCP-compatible development tool
-- 📋 **Structured Workflows**: 5-phase development cycles (Focus → Orchestrate → Refine → Generate → Evaluate)
-- 🧠 **Learning System**: Persistent project knowledge that grows with each interaction
-- 📚 **Rich Templates**: Comprehensive templates for cycles, agents, and documentation
-- ⚡ **Real-time State**: Live project progress and phase tracking
+- **AI-Native Design**: Built for AI coding assistants (Claude Code, Cursor, VS Code)
+- **5-Phase Workflow**: Focus → Orchestrate → Refine → Generate → Evaluate
+- **TDD Enforcement**: Tests before implementation, 80% minimum coverage
+- **Learning System**: Persistent project knowledge base
+- **Specialist Agents**: Expert guidance for each development aspect
 
-## Installation
+## Quick Start
+
+### Local Installation
 
 ```bash
-npm install -g forge-mcp-server
+cd forge-mcp
+npm install
+npm start
 ```
 
-## Configuration
+### Claude Code Configuration
 
-### Claude Code
-
-FORGE works seamlessly with Claude Code. Add to `~/.config/claude-code/settings.json`:
+Add to `~/.claude/settings.json`:
 
 ```json
 {
   "mcpServers": {
     "forge": {
-      "command": "forge-mcp-server",
-      "args": ["--stdio"]
+      "command": "node",
+      "args": ["/path/to/forge-mcp/server.js"]
     }
   }
 }
 ```
 
-### Cursor IDE
+### Usage
 
-Add to `.cursor/config.json`:
-
-```json
-{
-  "mcpServers": {
-    "forge": {
-      "command": "forge-mcp-server",
-      "args": ["--stdio"]
-    }
-  }
-}
-```
-
-### VS Code with MCP Extension
-
-Add to VS Code `settings.json`:
-
-```json
-{
-  "mcp.servers": [
-    {
-      "name": "forge",
-      "transport": "stdio",
-      "command": "forge-mcp-server",
-      "args": ["--stdio"],
-      "workingDirectory": "${workspaceFolder}"
-    }
-  ]
-}
-```
-
-Each project maintains its own `.forge/` directory for state management.
-
-**📖 [See all development tool configurations →](docs/MCP_UNIVERSAL_COMPATIBILITY.md)**
-
-FORGE works with any MCP-compatible development tool including Claude Code, Cursor, Continue, Zed, and more.
-
-## Usage
-
-FORGE MCP Server is designed to be used entirely through AI-powered development tools. Interact with FORGE through your AI coding assistant:
-
-**Examples with Claude Code:**
-- "Help me set up FORGE for my React project"
-- "I need to implement user authentication"
-- "Show me the status of my current development cycle"
-- "What did we learn from the last authentication project?"
-
-**Examples with Cursor:**
-- "Initialize FORGE for this TypeScript API"
-- "Create a new FORGE cycle for payment integration"
-- "Check FORGE phase requirements"
-
-Your AI coding assistant will use FORGE's MCP tools to guide you through structured development cycles, manage project state, and capture learnings.
-
-## Architecture
-
-- **Pure MCP Server**: No CLI interface - designed entirely for AI coding assistant interaction
-- **Development Tool Integration**: Works with any MCP-compatible development tool
-- **Global Installation**: Single installation works across multiple projects
-- **Project-Scoped State**: Each project maintains its own `.forge/` directory
-- **Template System**: Rich templates for development cycles and specialized agents
-- **Learning Integration**: Persistent knowledge base that improves with each project
+Just talk to Claude:
+- "Initialize FORGE in this project"
+- "Start a new cycle for user authentication"
+- "What's my cycle status?"
+- "Advance to the next phase"
 
 ## Development Cycles
 
-FORGE organizes development into structured 5-phase cycles:
+FORGE implements Intent-Driven Development through 5 phases:
 
-1. **Focus** 🎯 - Requirements gathering and planning
-2. **Orchestrate** 📝 - Task breakdown and dependency planning  
-3. **Refine** 🔨 - Implementation and testing
-4. **Generate** 🚀 - Build and deployment preparation
-5. **Evaluate** 📊 - Success measurement and retrospective
+| Phase | Purpose | Key Output |
+|-------|---------|------------|
+| **Focus** 🎯 | Clarity: What & Why | Problem statement, success criteria, C4 L1 |
+| **Orchestrate** 📋 | Planning: Break It Down | C4 L2-L3, dependency map, session-sized tasks |
+| **Refine** ✏️ | Precision: Define "Done" | Acceptance criteria, interfaces, edge cases |
+| **Generate** ⚡ | Creation: TDD Code | RED → GREEN → REFACTOR |
+| **Evaluate** ✅ | Verification | Criteria check, security review, disposition |
 
-## Specialized Agents
+**Key Rule**: No code in Refine phase - specifications only.
 
-FORGE provides specialized AI agents for each aspect of development:
+## MCP Tools
 
-### Core Development Agents
-- **🏗️ Architect Agent** - System design, architecture patterns, technology selection
-- **🔨 Developer Agent** - Code implementation, TDD practices, framework expertise
-- **🧪 Tester Agent** - Test strategy, automation, quality assurance
-- **🚀 DevOps Agent** - Infrastructure, CI/CD pipelines, deployment automation
+| Tool | Purpose |
+|------|---------|
+| `forge_init` | Initialize FORGE in project |
+| `forge_new_cycle` | Create development cycle |
+| `forge_list_cycles` | List all cycles |
+| `forge_status` | Check cycle progress |
+| `forge_validate` | Validate phase requirements |
+| `forge_advance_phase` | Move to next phase |
+| `forge_complete_task` | Mark task complete |
+| `forge_add_task` | Add new task |
+| `forge_complete_cycle` | Complete and archive cycle |
+| `forge_add_learning` | Capture learning |
+| `forge_retro` | Run retrospective |
+| `forge_invoke_agent` | Invoke specialist agent |
 
-### Quality & Process Agents
-- **📝 Code Reviewer Agent** - Code quality, best practices, technical debt management
-- **🔐 Security Agent** - Vulnerability assessment, compliance, threat modeling
-- **📚 Documentation Agent** - Technical writing, API docs, knowledge management
-- **🔍 Project Analyzer Agent** - Codebase analysis, project setup optimization
+## MCP Resources
 
-Each agent is automatically invoked during relevant phases of the development cycle, providing expert guidance tailored to your project's needs.
+| URI | Content |
+|-----|---------|
+| `forge://config` | Project configuration |
+| `forge://context` | AI assistant context |
+| `forge://learnings` | Knowledge base |
+| `forge://cycles/{id}` | Cycle content |
+| `forge://cookbook/{phase}` | Phase guides |
+| `forge://agents/{name}` | Agent definitions |
 
-## MCP Resources & Tools
+## Specialist Agents
 
-### Resources
-- `forge://templates/*` - Development templates and agent definitions
-- `forge://cycles/active` - Current active development cycles
-- `forge://cycles/history` - Completed cycle archive
-- `forge://context/project` - Project configuration and AI context
-- `forge://context/learnings` - Project knowledge base
+| Agent | Expertise |
+|-------|-----------|
+| `architect` | System design, C4 diagrams, technology selection |
+| `developer` | TDD implementation, code patterns |
+| `tester` | Test strategy, edge cases, quality |
+| `security` | Threat modeling, OWASP, compliance |
+| `devops` | CI/CD, infrastructure, deployment |
+| `documentation` | Technical writing, API docs |
+| `reviewer` | Code review, best practices |
 
-### Tools
-- `forge_init_project` - Initialize FORGE in project
-- `forge_new_cycle` - Create new development cycle
-- `forge_cycle_status` - Get cycle progress and status
-- `forge_phase_advance` - Advance to next development phase
-- `forge_complete_cycle` - Complete and archive cycle
-- `forge_add_learning` - Add insight to knowledge base
-- `forge_retrospective` - Generate retrospective analysis
-- `forge_analyze_project` - Analyze project structure
+## Project Structure
+
+```
+forge-mcp/
+├── server.js              # Entry point
+├── lib/
+│   ├── core/
+│   │   ├── mcp-server.js  # MCP protocol handler
+│   │   └── state-manager.js # File-based state
+│   ├── tools/index.js     # MCP tool implementations
+│   ├── resources/index.js # MCP resource handlers
+│   └── transport/stdio.js # Stdio transport
+├── cookbook/phases/       # Phase guides
+├── prompts/               # PRD and retrospective guides
+└── templates/             # Cycle and agent templates
+```
+
+## Development
+
+```bash
+npm test        # Run tests
+npm run dev     # Debug mode
+npm run lint    # Check code style
+```
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
-
-## Contributing
-
-This project represents the future of AI-collaborative development. Contributions welcome!
+MIT License - see [LICENSE](LICENSE) file.
 
 ---
 
-*FORGE MCP Server - The first truly AI-native development framework*
+*FORGE - Intent-Driven Development for the AI era*
