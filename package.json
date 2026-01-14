@@ -1,20 +1,30 @@
 {
   "name": "forge-mcp-server",
   "version": "2.0.0",
-  "description": "Pure MCP server implementation of the FORGE development framework",
+  "description": "MCP server for Intent-Driven Development (IDD) - structured AI-assisted development workflow",
   "author": "Scott Feltham <scott@neoforge.co>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/scottfeltham/forge-mcp-server.git"
+    "url": "git+https://github.com/scottfeltham/forge-mcp.git"
   },
-  "homepage": "https://github.com/scottfeltham/forge-mcp-server#readme",
+  "homepage": "https://github.com/scottfeltham/forge-mcp#readme",
   "bugs": {
-    "url": "https://github.com/scottfeltham/forge-mcp-server/issues"
+    "url": "https://github.com/scottfeltham/forge-mcp/issues"
   },
+  "mcpName": "forge",
   "bin": {
     "forge-mcp-server": "./server.js",
     "forge-mcp": "./server.js"
   },
+  "files": [
+    "server.js",
+    "lib/",
+    "cookbook/",
+    "prompts/",
+    "templates/",
+    "README.md",
+    "LICENSE"
+  ],
   "preferGlobal": true,
   "main": "server.js",
   "scripts": {
@@ -22,22 +32,23 @@
     "dev": "node server.js --stdio --debug",
     "test": "node test/run-tests.js",
     "lint": "eslint server.js lib/ test/",
-    "lint:fix": "eslint --fix server.js lib/ test/"
+    "lint:fix": "eslint --fix server.js lib/ test/",
+    "prepublishOnly": "npm test && npm run lint"
   },
   "keywords": [
     "mcp",
-    "model-context-protocol", 
+    "model-context-protocol",
     "ai",
-    "development",
-    "framework",
+    "intent-driven-development",
+    "idd",
+    "tdd",
     "claude",
-    "chatgpt",
+    "cursor",
     "copilot",
-    "workflow",
-    "automation",
+    "vscode",
     "forge",
-    "ai-native",
-    "development-cycles"
+    "development-workflow",
+    "ai-coding"
   ],
   "dependencies": {
     "js-yaml": "^4.1.0",
