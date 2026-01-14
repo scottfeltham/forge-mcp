@@ -37,7 +37,7 @@ class TestContext {
     const fs = require('fs').promises;
     try {
       await fs.rm(this.testDir, { recursive: true, force: true });
-    } catch (e) {}
+    } catch (e) { /* ignore cleanup errors */ }
   }
 }
 

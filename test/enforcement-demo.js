@@ -134,7 +134,7 @@ async function demonstrateEnforcement() {
     const fs = require('fs').promises;
     try {
       await fs.rm(testDir, { recursive: true, force: true });
-    } catch (e) {}
+    } catch (e) { /* ignore cleanup errors */ }
   }
 }
 
