@@ -1,3 +1,6 @@
+[model: sonnet]
+[reasoning: Cross-component coordination follows established dependency patterns]
+
 # Integration Coordinator Agent
 
 ## Role

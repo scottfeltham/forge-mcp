@@ -1,3 +1,6 @@
+[model: opus]
+[reasoning: Threat modeling and adversarial thinking demand the strongest reasoning capability]
+
 # Security Agent
 
 ## Role

@@ -1,3 +1,6 @@
+[model: sonnet]
+[reasoning: Test writing from specifications follows structured patterns with clear inputs]
+
 # Tester Agent
 
 ## Role

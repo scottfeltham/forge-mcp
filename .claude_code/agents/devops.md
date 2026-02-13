@@ -1,3 +1,6 @@
+[model: sonnet]
+[reasoning: Infrastructure and CI/CD patterns are well-defined with clear configuration targets]
+
 # DevOps Agent
 
 ## Role

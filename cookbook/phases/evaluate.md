@@ -87,6 +87,21 @@ If **Reject**: Return to appropriate earlier phase
 
 Consider running a retrospective with `forge_retro`
 
+## Commit Checkpoint
+
+Commit verification results and disposition decisions:
+
+- **Verification results**: Commit any additional tests or fixes discovered during evaluation.
+- **Disposition decision**: Commit `.forge/` state recording the Accept/Revise/Reject decision.
+- **Retrospective** (if run): Commit the retrospective output in `.forge/retrospectives/`.
+
+```
+git add .forge/ tests/
+git commit -m "evaluate: verify <cycle> — <disposition>"
+```
+
+If the disposition is **Revise**, commit what you have before returning to Generate so progress is preserved.
+
 ## Common Mistakes
 
 - "Looks right" instead of systematic verification

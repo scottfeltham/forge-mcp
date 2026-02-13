@@ -1,3 +1,6 @@
+[model: opus]
+[reasoning: Architecture decisions require deep trade-off analysis and system-level thinking]
+
 # Architect Agent
 
 ## Role

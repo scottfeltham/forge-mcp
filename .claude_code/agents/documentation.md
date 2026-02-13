@@ -1,3 +1,6 @@
+[model: haiku]
+[reasoning: Structured writing from existing technical content is a fast, well-scoped task]
+
 # Documentation Agent
 
 ## Role

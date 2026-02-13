@@ -73,6 +73,21 @@ Before marking a task complete:
 - [ ] Code review completed
 - [ ] Integration verified
 
+## Commit Checkpoint
+
+Commit after each completed TDD cycle, not just at the end of the phase:
+
+- **After each RED-GREEN-REFACTOR cycle**: Commit the test and implementation together so every commit is a green build.
+- **After code review**: Commit any review-driven changes as a separate commit.
+- **After all tasks complete**: Commit `.forge/` state to record phase completion.
+
+```
+git add src/ tests/ .forge/
+git commit -m "generate: implement <feature> with tests"
+```
+
+**Cadence**: Frequent small commits are better than one large commit at the end. Each commit should leave tests passing.
+
 ## Common Mistakes
 
 - Writing code before tests

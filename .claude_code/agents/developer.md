@@ -1,3 +1,6 @@
+[model: sonnet]
+[reasoning: Well-specified implementation tasks with clear acceptance criteria from Refine phase]
+
 # Developer Agent
 
 ## Role
