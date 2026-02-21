@@ -363,15 +363,27 @@ The framework organizes work into 5-phase cycles implementing Intent-Driven Deve
    - Interface specifications (inputs, outputs, errors)
    - Edge cases by category - NO CODE WRITTEN
 
-4. **Generate** ⚡ - **Creation: AI Writes Code**
-   - One task per session
-   - TDD: RED → GREEN → REFACTOR
-   - Code review before advancing
+4. **Generate** ⚡ - **Creation: AI Produces Deliverables**
+   - Feature-level: Code via TDD (RED → GREEN → REFACTOR)
+   - Product-level: Documentation, PRD, architecture docs, feature cycle plan
+   - One task per session, code review before advancing
 
 5. **Evaluate** ✅ - **Verification: Does Output Match Intent?**
    - Verify against acceptance criteria
    - Test edge cases (listed AND unlisted)
    - Disposition: Accept / Accept with issues / Revise / Reject
+
+### Product-Level Cycles
+
+FORGE cycles work at any scope. At the product level, the same 5 phases apply but Generate produces documentation and plans instead of code. Each planned feature then becomes its own FORGE cycle.
+
+| Phase | Feature-Level | Product-Level |
+|-------|--------------|---------------|
+| **Focus** | What feature & why | What product/MVP & why |
+| **Orchestrate** | Component architecture | System architecture, feature breakdown |
+| **Refine** | Feature acceptance criteria | Product criteria, per-feature scope |
+| **Generate** | Code (TDD) | PRD, architecture docs, feature cycle plan |
+| **Evaluate** | Verify code | Verify plans match intent |
 
 ### Document Creation
 
