@@ -75,6 +75,7 @@ Also test edge cases discovered during Generate.
 - [ ] Edge cases tested
 - [ ] Integration tested
 - [ ] Security reviewed
+- [ ] Cycle review summary emitted (docs/<cycle>/cycle-review.md)
 - [ ] Disposition decided
 
 ## After Evaluate
