@@ -7,7 +7,6 @@
 const { program } = require('commander');
 const { createMCPServer } = require('./lib/core/mcp-server');
 const { StdioTransport } = require('./lib/transport/stdio');
-const { SSETransport } = require('./lib/transport/sse');
 
 // Command line interface
 program
@@ -15,7 +14,6 @@ program
   .description('FORGE MCP Server - AI-native development framework')
   .version('2.0.0')
   .option('--stdio', 'Use stdio transport (default)', true)
-  .option('--sse <port>', 'Use SSE transport on specified port')
   .option('--debug', 'Enable debug logging')
   .option('--base-dir <path>', 'Base directory for .forge projects', process.cwd())
   .parse();
@@ -64,17 +62,10 @@ async function main() {
       logger
     });
 
-    // Setup transport layer
-    if (options.sse) {
-      const port = parseInt(options.sse);
-      logger.info(`Starting SSE transport on port ${port}`);
-      const transport = new SSETransport(server, port, { logger });
-      await transport.start();
-    } else {
-      logger.debug('Starting stdio transport');
-      const transport = new StdioTransport(server, { logger });
-      await transport.start();
-    }
+    // Setup transport layer (stdio only)
+    logger.debug('Starting stdio transport');
+    const transport = new StdioTransport(server, { logger });
+    await transport.start();
 
   } catch (error) {
     logger.error('Failed to start server:', error.message);
