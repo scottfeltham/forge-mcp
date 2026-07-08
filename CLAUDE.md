@@ -6,6 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 FORGE MCP Server is a pure MCP (Model Context Protocol) implementation of the FORGE development framework. It's designed from the ground up for AI assistant interaction, providing structured development workflow management without any CLI interface.
 
+> **Status: maintenance mode.** The canonical FORGE implementation is
+> forge-skill + forge-kit (same `.forge/` state format). This server is kept
+> working for MCP-only clients; add new capabilities to the skill first and
+> port here only when needed.
+
 ## Claude Code Subagent Integration
 
 FORGE provides specialized Claude Code subagents for expert guidance throughout development cycles. These are real subagents with proper tool restrictions and context management.

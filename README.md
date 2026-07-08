@@ -1,5 +1,11 @@
 # FORGE MCP Server
 
+> 🧊 **MAINTENANCE MODE.** The canonical FORGE implementation is now
+> [forge-skill](https://github.com/scottfeltham/forge-skill) (Claude Code
+> skill) paired with forge-kit (phase-guard hook). This server shares the
+> same `.forge/` state format and remains available for MCP-only clients
+> (Cursor, VS Code, etc.), but new capabilities land in the skill first.
+
 **Pure MCP (Model Context Protocol) implementation of the FORGE development framework**
 
 FORGE MCP Server is an AI-native development framework designed for AI-powered development tools. It provides structured workflow management through the MCP standard, implementing Intent-Driven Development (IDD).
